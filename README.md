@@ -22,7 +22,6 @@ pip install -r requirements.txt
 NCTE_Transcripts/
 ├── classroom-transcript-analysis-main/
 │   └── coding schemes/
-├── processed/  --> this will be populated after the first script is run
 ├── LICENSE
 ├── README.md
 ├── requirements.txt

@@ -1,0 +1,121 @@
+Initial dataset shape: (580408, 9)
+
+Columns: ['speaker', 'text', 'year', 'OBSID', 'video_id', 'cleaned_text', 'num_words', 'turn_idx', 'comb_idx']
+
+===== MISSINGNESS ANALYSIS =====
+cleaned_text    0.000086
+speaker         0.000022
+text            0.000000
+year            0.000000
+OBSID           0.000000
+video_id        0.000000
+num_words       0.000000
+turn_idx        0.000000
+comb_idx        0.000000
+dtype: float64
+
+Fraction of rows missing ≥1 critical field: 0.000
+
+===== TRANSCRIPTION ARTIFACT ANALYSIS =====
+src/initial_eval_and_clean.py:47: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  artifact_stats[name] = df["cleaned_text"].str.contains(
+inaudible       0.128921
+filled_pause    0.013408
+non_lexical     0.007741
+bracketed       0.000000
+dtype: float64
+
+Fraction of utterances ≤2 words: 0.334
+
+Speaker distribution:
+speaker
+teacher              0.493734
+student              0.439818
+multiple students    0.066448
+Name: proportion, dtype: float64
+
+===== POST-CLEANING DIAGNOSTICS =====
+Fraction empty after cleaning: 0.060
+src/initial_eval_and_clean.py:126: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  post_artifacts[name] = df["cleaned_text_v2"].str.contains(
+
+Artifact rates after cleaning:
+inaudible       0.000000
+bracketed       0.000000
+filled_pause    0.000000
+non_lexical     0.007741
+dtype: float64
+
+Fraction of utterances ≤2 words after cleaning: 0.344
+
+===== TEACHER–STUDENT INTERACTION METRICS =====
+Fraction teacher turns responding immediately to students: 0.4547938691403289
+Fraction student turns following teacher: 0.45519531088475695
+src/initial_eval_and_clean.py:184: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df["cleaned_text_v2"].str.contains(ACK_PATTERNS, regex=True, na=False)
+Fraction of teacher turns with acknowledgment tokens: 0.19337431599840113
+Mean teacher lexical overlap with previous student turn: 0.3318722279835529
+Fraction of student turns following teacher questions: 0.0
+
+Saved interaction metrics to interaction_metrics_by_lesson.csv
+
+Cleaned dataset saved to: NCTE_Transcripts/ncte_single_utterances_cleaned.csv
+(edu) (base) elisabeth@DNa1d058f CS293 % python src/initial_eval_and_clean.py
+Initial dataset shape: (580408, 9)
+
+Columns: ['speaker', 'text', 'year', 'OBSID', 'video_id', 'cleaned_text', 'num_words', 'turn_idx', 'comb_idx']
+
+===== MISSINGNESS ANALYSIS =====
+cleaned_text    0.000086
+speaker         0.000022
+text            0.000000
+year            0.000000
+OBSID           0.000000
+video_id        0.000000
+num_words       0.000000
+turn_idx        0.000000
+comb_idx        0.000000
+dtype: float64
+
+Fraction of rows missing ≥1 critical field: 0.000
+
+===== TRANSCRIPTION ARTIFACT ANALYSIS =====
+inaudible       0.128921
+filled_pause    0.013408
+non_lexical     0.007741
+bracketed       0.000000
+dtype: float64
+
+Fraction of utterances ≤2 words: 0.334
+
+Speaker distribution:
+speaker
+teacher              0.493734
+student              0.439818
+multiple students    0.066448
+Name: proportion, dtype: float64
+
+===== POST-CLEANING DIAGNOSTICS =====
+Fraction empty after cleaning: 0.060
+
+Artifact rates after cleaning:
+inaudible       0.000000
+bracketed       0.000000
+filled_pause    0.000000
+non_lexical     0.007741
+dtype: float64
+
+Fraction of utterances ≤2 words after cleaning: 0.344
+
+===== TEACHER–STUDENT INTERACTION METRICS =====
+Fraction teacher turns responding immediately to students: 0.4547938691403289
+Fraction student turns following teacher: 0.45519531088475695
+src/initial_eval_and_clean.py:184: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df["cleaned_text_v2"].str.contains(ACK_PATTERNS, regex=True, na=False)
+Fraction of teacher turns with acknowledgment tokens: 0.19337431599840113
+Mean teacher lexical overlap with previous student turn: 0.3318722279835529
+Fraction of student turns following teacher questions: 0.0
+
+Saved interaction metrics to interaction_metrics_by_lesson.csv
+
+Cleaned dataset saved to: NCTE_Transcripts/ncte_single_utterances_cleaned.csv

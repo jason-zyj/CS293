@@ -1,5 +1,16 @@
 # Project specific
-NCTE_Transcripts
+# Ignore everything in NCTE_Transcripts
+NCTE_Transcripts/*
+
+# Allow the processed folder itself
+!NCTE_Transcripts/processed/
+
+# Ignore everything inside processed
+NCTE_Transcripts/processed/*
+
+# Except .txt files
+!NCTE_Transcripts/processed/*.txt
+
 edu
 
 # General
