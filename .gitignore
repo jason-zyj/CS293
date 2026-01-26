@@ -10,6 +10,7 @@ NCTE_Transcripts/processed/*
 
 # Except .txt files
 !NCTE_Transcripts/processed/*.txt
+!NCTE_Transcripts/processed/reformulation
 
 edu
 

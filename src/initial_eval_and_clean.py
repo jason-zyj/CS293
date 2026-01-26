@@ -177,11 +177,12 @@ print("Fraction student turns following teacher:",
 ############################################
 
 # Teacher acknowledgment tokens
-ACK_PATTERNS = r"\b(yes|yeah|okay|right|mmhmm|uh huh)\b"
+ACK_PATTERNS = r"\b(?:yes|yeah|okay|right|mmhmm|uh huh)\b"
 
 df["teacher_acknowledgment"] = (
     df["is_teacher"] &
-    df["cleaned_text_v2"].str.contains(ACK_PATTERNS, regex=True, na=False)
+    df["cleaned_text_v2"].str.contains(ACK_PATTERNS, regex=True, na=False) &
+    (df["num_words_v2"] <= 5)
 )
 
 print("Fraction of teacher turns with acknowledgment tokens:",
@@ -192,20 +193,30 @@ print("Fraction of teacher turns with acknowledgment tokens:",
 # C. Teacher reformulation (lexical overlap)
 ############################################
 
+STOPWORDS = {
+    "the","a","an","is","are","to","of","and","that","it","this",
+    "you","we","they","i","in","on","for","with","but"
+}
+
 def lexical_overlap(row):
     if not row["is_teacher"] or pd.isna(row["prev_text"]):
-        return 0
-    prev_words = set(row["prev_text"].split())
-    curr_words = set(row["cleaned_text_v2"].split())
+        return 0.0
+
+    prev_words = {
+        w for w in row["prev_text"].split()
+        if w not in STOPWORDS
+    }
+    curr_words = {
+        w for w in row["cleaned_text_v2"].split()
+        if w not in STOPWORDS
+    }
+
     if len(prev_words) == 0:
-        return 0
+        return 0.0
+
     return len(prev_words & curr_words) / len(prev_words)
 
 df["teacher_reformulation_overlap"] = df.apply(lexical_overlap, axis=1)
-
-print("Mean teacher lexical overlap with previous student turn:",
-      df.loc[df["teacher_after_student"], "teacher_reformulation_overlap"].mean())
-
 
 ############################################
 # D. Question-following behavior
@@ -213,13 +224,16 @@ print("Mean teacher lexical overlap with previous student turn:",
 
 df["teacher_question"] = (
     df["is_teacher"] &
-    df["cleaned_text_v2"].str.endswith("?")
+    df["text"].str.contains(r"\?", regex=True, na=False)
 )
+
+df["prev_raw_text"] = df.groupby("OBSID")["text"].shift(1)
 
 df["student_after_question"] = (
     df["is_student"] &
-    df["prev_text"].str.endswith("?", na=False)
+    df["prev_raw_text"].str.contains(r"\?", regex=True, na=False)
 )
+
 
 print("Fraction of student turns following teacher questions:",
       df["student_after_question"].mean())

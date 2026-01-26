@@ -1,0 +1,25 @@
+                                OLS Regression Results                                
+======================================================================================
+Dep. Variable:     mean_reformulation_overlap   R-squared:                       0.001
+Model:                                    OLS   Adj. R-squared:                  0.000
+Method:                         Least Squares   F-statistic:                     1.474
+Date:                        Mon, 26 Jan 2026   Prob (F-statistic):              0.225
+Time:                                12:41:47   Log-Likelihood:                 1465.4
+No. Observations:                        1622   AIC:                            -2927.
+Df Residuals:                            1620   BIC:                            -2916.
+Df Model:                                   1                                         
+Covariance Type:                    nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.2972      0.014     20.518      0.000       0.269       0.326
+CLSTENG        0.0033      0.003      1.214      0.225      -0.002       0.009
+==============================================================================
+Omnibus:                       66.854   Durbin-Watson:                   1.838
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               75.475
+Skew:                           0.487   Prob(JB):                     4.08e-17
+Kurtosis:                       3.410   Cond. No.                         32.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
