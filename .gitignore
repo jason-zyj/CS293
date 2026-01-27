@@ -14,6 +14,10 @@ NCTE_Transcripts/processed/*
 
 edu
 
+
+# python environment
+.venv
+
 # General
 .DS_Store
 __MACOSX/
