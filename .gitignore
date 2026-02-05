@@ -12,6 +12,9 @@ NCTE_Transcripts/processed/*
 !NCTE_Transcripts/processed/*.txt
 !NCTE_Transcripts/processed/reformulation
 
+# Allow processed/annotations folder
+!NCTE_Transcripts/processed/annotations
+
 edu
 
 
