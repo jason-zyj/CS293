@@ -3,7 +3,8 @@ import itertools
 from sklearn.metrics import cohen_kappa_score
 
 # ---- SETTINGS ----
-file_path = "NCTE_Transcripts/processed/annotations/annotations.xlsx"
+data_folder = "NCTE_Transcripts/processed/annotations/"
+file_path = data_folder + "annotations.xlsx"
 annotator_names = ["Jason", "Evelyn", "Elisabeth", "Mrs. Cousins"]
 labels = [
     "R1: References prior student content",
