@@ -1,52 +1,52 @@
 ============================================================
 IRR Analysis: Jason vs Evelyn
 ============================================================
-Number of overlapping annotations: 100
+Number of overlapping annotations: 50
 
 R1: References prior student content:
-  Percent Agreement: 79.00%
-  Cohen's Kappa: 0.274
-  Jason prevalence: 19.0%
-  Evelyn prevalence: 16.0%
+  Percent Agreement: 82.00%
+  Cohen's Kappa: 0.514
+  Jason prevalence: 14.0%
+  Evelyn prevalence: 32.0%
 
 R2: Builds on student content:
-  Percent Agreement: 81.00%
-  Cohen's Kappa: 0.133
-  Jason prevalence: 11.0%
-  Evelyn prevalence: 14.0%
+  Percent Agreement: 76.00%
+  Cohen's Kappa: 0.239
+  Jason prevalence: 8.0%
+  Evelyn prevalence: 28.0%
 
 R3: Invites further student thinking:
-  Percent Agreement: 71.00%
-  Cohen's Kappa: 0.246
-  Jason prevalence: 33.0%
-  Evelyn prevalence: 16.0%
+  Percent Agreement: 76.00%
+  Cohen's Kappa: 0.449
+  Jason prevalence: 32.0%
+  Evelyn prevalence: 32.0%
 
-Average Cohen's Kappa across all variables: 0.218
+Average Cohen's Kappa across all variables: 0.400
 
 ============================================================
 IRR Analysis: Evelyn vs Elisabeth
 ============================================================
-Number of overlapping annotations: 100
+Number of overlapping annotations: 50
 
 R1: References prior student content:
-  Percent Agreement: 73.00%
-  Cohen's Kappa: 0.418
-  Evelyn prevalence: 24.0%
-  Elisabeth prevalence: 43.0%
+  Percent Agreement: 88.00%
+  Cohen's Kappa: 0.759
+  Evelyn prevalence: 48.0%
+  Elisabeth prevalence: 44.0%
 
 R2: Builds on student content:
-  Percent Agreement: 62.00%
-  Cohen's Kappa: 0.135
-  Evelyn prevalence: 12.0%
-  Elisabeth prevalence: 42.0%
+  Percent Agreement: 74.00%
+  Cohen's Kappa: 0.376
+  Evelyn prevalence: 24.0%
+  Elisabeth prevalence: 34.0%
 
 R3: Invites further student thinking:
-  Percent Agreement: 52.00%
-  Cohen's Kappa: 0.158
-  Evelyn prevalence: 11.0%
-  Elisabeth prevalence: 59.0%
+  Percent Agreement: 64.00%
+  Cohen's Kappa: 0.339
+  Evelyn prevalence: 22.0%
+  Elisabeth prevalence: 58.0%
 
-Average Cohen's Kappa across all variables: 0.237
+Average Cohen's Kappa across all variables: 0.491
 
 ============================================================
 IRR Analysis: Elisabeth vs Mrs. Cousins
@@ -106,13 +106,13 @@ OVERLAP SUMMARY FOR ALL PAIRS
 
 Jason & Evelyn:
   Jason annotated: 100 rows
-  Evelyn annotated: 200 rows
-  Overlapping rows: 100
+  Evelyn annotated: 100 rows
+  Overlapping rows: 50
 
 Evelyn & Elisabeth:
-  Evelyn annotated: 200 rows
+  Evelyn annotated: 100 rows
   Elisabeth annotated: 100 rows
-  Overlapping rows: 100
+  Overlapping rows: 50
 
 Elisabeth & Mrs. Cousins:
   Elisabeth annotated: 100 rows
@@ -127,7 +127,7 @@ Mrs. Cousins & Jason:
 ============================================================
 OVERALL SUMMARY
 ============================================================
-Jason_Evelyn: Average Kappa = 0.218
-Evelyn_Elisabeth: Average Kappa = 0.237
+Jason_Evelyn: Average Kappa = 0.400
+Evelyn_Elisabeth: Average Kappa = 0.491
 Elisabeth_Mrs. Cousins: Average Kappa = 0.576
 Mrs. Cousins_Jason: Average Kappa = nan

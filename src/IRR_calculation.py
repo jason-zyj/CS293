@@ -6,6 +6,12 @@ import sys
 def load_annotator_data(file_path, sheet_name):
     """Load annotations from a specific sheet"""
     df = pd.read_excel(file_path, sheet_name=sheet_name)
+    # Remove rows where all binary variables are NaN (truly blank rows)
+    binary_cols = ['R1: References prior student content', 
+                   'R2: Builds on student content', 
+                   'R3: Invites further student thinking']
+    # Keep rows where at least one binary variable is not NaN, OR where target_comb_idx exists
+    df = df.dropna(subset=['target_comb_idx'])
     return df
 
 def calculate_irr_for_pair(df1, df2, annotator1_name, annotator2_name):
@@ -131,7 +137,7 @@ def main(file_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python calculate_irr.py <path_to_excel_file>")
+        print("Usage: python src/IRR_calculation <path_to_excel_file>")
         sys.exit(1)
     
     file_path = sys.argv[1]
