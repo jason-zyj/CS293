@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import itertools
 
 # ---- SETTINGS ----
 data_folder = "NCTE_Transcripts/processed/annotations/"
@@ -14,8 +13,6 @@ labels = [
     "C1. No student content available (N/A)",
     "C2. Want annotation review"
 ]
-
-id_col = "OBSID"
 
 # Context + metadata columns to preserve
 meta_cols = [
@@ -47,16 +44,18 @@ for name in annotator_names:
 all_annotations = pd.concat(dfs, ignore_index=True)
 
 # ---- CREATE FINAL DATAFRAME BASE ----
-# Keep one copy of metadata per OBSID
-metadata = all_annotations.drop_duplicates(subset=id_col)[[id_col] + meta_cols]
+# Exclude target_comb_idx from meta_cols to avoid duplicate column on reset
+metadata_cols_no_id = [c for c in meta_cols if c != "target_comb_idx"]
+metadata = all_annotations.groupby("target_comb_idx")[metadata_cols_no_id].first().reset_index()
 
 final_df = metadata.copy()
+
 
 # ---- PROCESS EACH LABEL ----
 for label in labels:
 
     pivot = all_annotations.pivot_table(
-        index=id_col,
+        index="target_comb_idx",
         columns="annotator",
         values=label,
         aggfunc="first"
@@ -79,7 +78,7 @@ for label in labels:
 
     final_df = final_df.merge(
         resolved.rename(label + "_final"),
-        left_on=id_col,
+        left_on="target_comb_idx",
         right_index=True,
         how="left"
     )
