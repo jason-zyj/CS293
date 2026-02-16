@@ -1,0 +1,71 @@
+Total rows: 200
+Agreed rows (no REVIEW on any R1/R2/R3): 116
+============================================================
+TASK 1: Filter to agreed-upon annotations (exclude "REVIEW" rows)
+============================================================
+
+R1: References prior student content_final:
+  0: 87
+  1: 29
+
+R2: Builds on student content_final:
+  0: 97
+  1: 19
+
+R3: Invites further student thinking_final:
+  0: 75
+  1: 41
+
+Saved to agreed_annotations.csv
+Merged rows: 116
+============================================================
+TASK 2: ChatGPT vs Human Accuracy Evaluation
+============================================================
+
+R1:
+  N = 116
+  Accuracy:      0.741
+  Precision:     0.474
+  Recall:        0.310
+  F1 Score:      0.375
+  Cohen Kappa:   0.221
+  Confusion Matrix (rows=human, cols=ChatGPT):
+                Pred 0  Pred 1
+    True 0         77      10
+    True 1         20       9
+
+R2:
+  N = 116
+  Accuracy:      0.802
+  Precision:     0.167
+  Recall:        0.053
+  F1 Score:      0.080
+  Cohen Kappa:   0.001
+  Confusion Matrix (rows=human, cols=ChatGPT):
+                Pred 0  Pred 1
+    True 0         92       5
+    True 1         18       1
+
+R3:
+  N = 116
+  Accuracy:      0.681
+  Precision:     0.531
+  Recall:        0.829
+  F1 Score:      0.648
+  Cohen Kappa:   0.381
+  Confusion Matrix (rows=human, cols=ChatGPT):
+                Pred 0  Pred 1
+    True 0         45      30
+    True 1          7      34
+
+C1:
+  N = 107
+  Accuracy:      0.589
+  Precision:     0.833
+  Recall:        0.104
+  F1 Score:      0.185
+  Cohen Kappa:   0.095
+  Confusion Matrix (rows=human, cols=ChatGPT):
+                Pred 0  Pred 1
+    True 0         58       1
+    True 1         43       5

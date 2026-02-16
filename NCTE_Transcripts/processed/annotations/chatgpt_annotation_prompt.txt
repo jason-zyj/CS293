@@ -1,0 +1,60 @@
+Please annotate teacher utterances from elementary math classroom transcripts. I will upload a CSV file. Each row is one teacher utterance (the TARGET) along with surrounding conversation context.
+
+**COLUMN STRUCTURE:**
+- `target_comb_idx`: row identifier
+- `target_text`: the teacher utterance you are coding
+- `ctx_-4` through `ctx_-1`: preceding conversation turns (speaker + text)
+- `ctx_0`: the target utterance itself (same as target_text)
+- `ctx_1` and `ctx_2`: following conversation turns
+
+**YOUR TASK:**
+For each row, code the TARGET teacher utterance on three binary variables (1 = Yes, 0 = No):
+
+**R1 – References prior student content**
+Does the teacher explicitly reference a student's immediately prior idea, strategy, or answer?
+- Mark 1 if the teacher: repeats or paraphrases a student's words or numbers; names or points to a student's idea or method; clearly ties the utterance to what a student just said.
+- Mark 0 if the teacher: introduces new content with no link to a student idea; asks a generic question not tied to a student response; gives directions or praise without referencing content.
+- Examples: "You said you added 7 and 5 to get 12." → 1. "Let's look at the next problem." → 0.
+
+**R2 – Builds on student content**
+Does the teacher work with the student's idea by explaining, modifying, extending, or reasoning about it? R2 is about the teacher doing cognitive work on the student's idea.
+- Mark 1 if the teacher: explains, clarifies, or corrects the student's reasoning; extends or generalizes the idea; revoices the idea and adds new meaning; connects the idea to a concept, representation, or rule.
+- Mark 0 if the teacher: only repeats the idea (that would be R1 only); only evaluates ("right," "almost," "no"); moves on without engaging the idea.
+- Key constraint: R2 can only be 1 if R1 is also 1 (you must reference content to build on it).
+- Examples: "You added 7 and 5 by making a 10 first—that works because 7 needs 3 more to make 10." → 1. "So you got 12." → 0.
+
+**R3 – Invites further student thinking**
+Does the teacher prompt students to continue reasoning, explain more, or revise their thinking? R3 is about the teacher handing the cognitive work back to students.
+- Mark 1 if the teacher: asks students to explain, justify, or elaborate; requests revision, comparison, or checking; opens discussion or invites multiple strategies; asks a follow-up question that requires thinking, not recall.
+- Mark 0 if the teacher: ends the interaction; provides a full explanation with no prompt; asks a procedural or yes/no question that doesn't advance reasoning.
+- Examples: "Why did breaking the 7 into 3 and 4 help you?" → 1. "So the answer is 12." → 0.
+
+**CLARIFYING R2 vs R3:**
+- R2 = Teacher is doing the thinking (explains, fixes, extends the student's idea)
+- R3 = Teacher is asking the student to do the thinking (prompts reasoning)
+- Both can be 1 in the same utterance.
+- For questions: ask yourself "Could this question be asked even if no student had spoken yet?" If yes → not R2. If the question relies on a student idea → R2 is possible.
+
+**Control Codes: C1. No student content available**
+- Mark 1 only when the utterance clearly cannot be responsive (e.g., opening lecture, logistics, classroom management). This also may include if the student’s previous utterance was [inaudible] and you cannot clearly tell that the teacher is building on what they just said.
+- Mark 0 in any other cases
+- Examples: 
+Opening instruction: “Today we’re learning about fractions.”
+Logistics: “Take out your math journals.”
+
+**IMPORTANT RULES:**
+- Code based ONLY on the transcript context provided. Do not infer beyond what is written.
+- If there is no student content in the preceding context, R1 and R2 should be 0.
+- R2 can only be 1 if R1 is also 1.
+- All three codes are independent otherwise — any combination of R1, R2, R3 is valid as long as the R2 constraint is respected.
+
+**OUTPUT FORMAT:**
+Return a CSV with exactly 4 columns and 116 data rows (plus header):
+- `target_comb_idx` (copy directly from the input)
+- `R1_chatgpt`
+- `R2_chatgpt`
+- `R3_chatgpt`
+- `C1_chatgpt`
+
+Please do not include any explanation or commentary, just output the CSV data. Process every single row in the file.
+ 
