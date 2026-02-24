@@ -21,7 +21,13 @@ R3: Invites further student thinking:
   Jason prevalence: 32.0%
   Evelyn prevalence: 32.0%
 
-Average Cohen's Kappa across all variables: 0.400
+C1. No student content available (N/A):
+  Percent Agreement: 66.00%
+  Cohen's Kappa: 0.331
+  Jason prevalence: 54.0%
+  Evelyn prevalence: 40.0%
+
+Average Cohen's Kappa across all variables: 0.383
 
 ============================================================
 IRR Analysis: Evelyn vs Elisabeth
@@ -46,7 +52,13 @@ R3: Invites further student thinking:
   Evelyn prevalence: 22.0%
   Elisabeth prevalence: 58.0%
 
-Average Cohen's Kappa across all variables: 0.491
+C1. No student content available (N/A):
+  Percent Agreement: 96.00%
+  Cohen's Kappa: 0.884
+  Evelyn prevalence: 20.0%
+  Elisabeth prevalence: 24.0%
+
+Average Cohen's Kappa across all variables: 0.589
 
 ============================================================
 IRR Analysis: Elisabeth vs Mrs. Cousins
@@ -71,7 +83,13 @@ R3: Invites further student thinking:
   Elisabeth prevalence: 60.0%
   Mrs. Cousins prevalence: 44.0%
 
-Average Cohen's Kappa across all variables: 0.576
+C1. No student content available (N/A):
+  Percent Agreement: 88.00%
+  Cohen's Kappa: 0.705
+  Elisabeth prevalence: 24.0%
+  Mrs. Cousins prevalence: 32.0%
+
+Average Cohen's Kappa across all variables: 0.608
 
 ============================================================
 IRR Analysis: Mrs. Cousins vs Jason
@@ -97,6 +115,12 @@ R3: Invites further student thinking:
   Cohen's Kappa: 0.545
   Mrs. Cousins prevalence: 40.0%
   Jason prevalence: 20.0%
+
+C1. No student content available (N/A):
+  Percent Agreement: 40.00%
+  Cohen's Kappa: -0.154
+  Mrs. Cousins prevalence: 40.0%
+  Jason prevalence: 60.0%
 
 Average Cohen's Kappa across all variables: nan
 
@@ -127,7 +151,14 @@ Mrs. Cousins & Jason:
 ============================================================
 OVERALL SUMMARY
 ============================================================
+Without C1:
 Jason_Evelyn: Average Kappa = 0.400
 Evelyn_Elisabeth: Average Kappa = 0.491
 Elisabeth_Mrs. Cousins: Average Kappa = 0.576
+Mrs. Cousins_Jason: Average Kappa = nan
+
+With C1: 
+Jason_Evelyn: Average Kappa = 0.383
+Evelyn_Elisabeth: Average Kappa = 0.589
+Elisabeth_Mrs. Cousins: Average Kappa = 0.608
 Mrs. Cousins_Jason: Average Kappa = nan
