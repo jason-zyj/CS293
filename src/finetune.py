@@ -71,7 +71,10 @@ class NCTEDataset(Dataset):
             return_tensors="pt"
         )
 
-        labels = torch.tensor(row[LABEL_COLS].values.astype(float))
+        labels = torch.tensor(
+                    row[LABEL_COLS].values.astype(np.float32),
+                    dtype=torch.float32
+                )
 
         return {
             "input_ids": enc["input_ids"].squeeze(0),

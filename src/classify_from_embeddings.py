@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 
 """
+@Jason:
 To try MLP, change these lines:
 from sklearn.neural_network import MLPClassifier
 base_model = MLPClassifier(hidden_layer_sizes=(128,), max_iter=500)
@@ -37,7 +38,7 @@ X_train = train_data["embeddings"]
 y_train = train_data["labels"]
 
 val_data = np.load(VAL_EMBED_PATH)
-X_val = val_data["embeddings"]
+X_val = val_data["embeddings"]  # pretty sure this is the line to change to concatenate heuristics @Evelyn
 y_val = val_data["labels"]
 
 print("Train shape:", X_train.shape)
@@ -102,6 +103,7 @@ print(classification_report(
 ))
 
 '''
+Baseline:
 Evaluating on human validation set...
 R1 F1: 0.5202
 R2 F1: 0.4948
