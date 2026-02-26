@@ -21,14 +21,14 @@ EPOCHS_STAGE2 = 3
 PATIENCE = 2
 
 data_folder = "NCTE_Transcripts/processed/annotations/"
-TRAIN_CSV = data_folder + "synthetic_annotations.csv"   # 2000 ChatGPT labeled 
-VAL_CSV = data_folder + "agreed_annotations.csv"           # 107 human annotated
+TRAIN_CSV = data_folder + "sampled_teacher_utt_pseudolabels-generated.csv"   # 2000 ChatGPT labeled 
+VAL_CSV = data_folder + "agreed_annotations.csv"           # 200 human annotated
 
 LABEL_COLS = [
-    "R1: References prior student content_final",
-    "R2: Builds on student content_final",
-    "R3: Invites further student thinking_final",
-    "C1. No student content available (N/A)_final"
+    "R1: References prior student content",
+    "R2: Builds on student content",
+    "R3: Invites further student thinking",
+    "C1. No student content available (N/A)"
 ]
 
 DEVICE = torch.device("mps" if torch.backends.mps.is_available() else "cpu")

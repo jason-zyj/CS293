@@ -1,11 +1,11 @@
 '''
 To compute the chat annotations:
-python src/precompute_roberta_embeddings.py \
-    --input_csv NCTE_Transcripts/processed/annotations/synthetic_annotations.csv \
+python src/precompute_embeddings.py \
+    --input_csv NCTE_Transcripts/processed/annotations/sampled_teacher_utt_pseudolabels-generated.csv \
     --output_embeddings synthetic_embeddings.npz
 
 To compute the human annotations:
-python precompute_roberta_embeddings.py \
+python src/precompute_embeddings.py \
     --input_csv NCTE_Transcripts/processed/annotations/agreed_annotations.csv \
     --output_embeddings human_embeddings.npz
 
@@ -32,10 +32,10 @@ MAX_LEN = 512
 BATCH_SIZE = 16
 
 LABEL_COLS = [
-    "R1: References prior student content_final",
-    "R2: Builds on student content_final",
-    "R3: Invites further student thinking_final",
-    "C1. No student content available (N/A)_final"
+    "R1: References prior student content",
+    "R2: Builds on student content",
+    "R3: Invites further student thinking",
+    "C1. No student content available (N/A)"
 ]
 
 DEVICE = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
