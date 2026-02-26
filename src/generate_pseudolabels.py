@@ -3,7 +3,7 @@
 
 Usage:
   export OPENAI_API_KEY=...
-  python src/generate_pseudolabels_gpt5nano.py \
+  python src/generate_pseudolabels.py \
     --input NCTE_Transcripts/processed/annotations/sampled_teacher_utt_pseudolabels.csv \
     --output NCTE_Transcripts/processed/annotations/sampled_teacher_utt_pseudolabels_labeled.csv
 
