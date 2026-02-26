@@ -17,6 +17,13 @@ NCTE_Transcripts/processed/*
 
 edu
 
+# compiled python files
+__pycache__/
+*.pyc
+
+# log
+nohup.out
+
 
 # python environment
 .venv
