@@ -9,6 +9,11 @@ python src/precompute_embeddings.py \
     --input_csv NCTE_Transcripts/processed/annotations/agreed_annotations.csv \
     --output_embeddings human_embeddings.npz
 
+To compute the inference embeddings:
+python src/precompute_embeddings.py \
+    --input_csv NCTE_Transcripts/processed/annotations/teacher_utt_for_inference.csv \
+    --output_embeddings inference_embeddings.npz
+
 .npz will contain:
 embeddings  → (N, 768)
 labels      → (N, 4)
@@ -46,9 +51,10 @@ print("Using device:", DEVICE)
 # DATASET
 # =========================
 class NCTEDataset(Dataset):
-    def __init__(self, df, tokenizer):
+    def __init__(self, df, tokenizer, has_labels):
         self.df = df
         self.tokenizer = tokenizer
+        self.has_labels = has_labels
 
     def build_input(self, row):
         segments = []
@@ -81,7 +87,14 @@ class NCTEDataset(Dataset):
             return_tensors="pt"
         )
 
-        labels = torch.tensor(row[LABEL_COLS].values.astype(float))
+        # If labels exist → use them
+        if self.has_labels:
+            labels = torch.tensor(
+                row[LABEL_COLS].values.astype(float),
+                dtype=torch.float32
+            )
+        else:
+            labels = torch.zeros(len(LABEL_COLS), dtype=torch.float32)
 
         return {
             "input_ids": enc["input_ids"].squeeze(0),
@@ -120,8 +133,12 @@ def precompute_embeddings(input_csv, output_path):
     print("Loading data...")
     df = pd.read_csv(input_csv)
 
+    # Check if label columns exist
+    has_labels = all(col in df.columns for col in LABEL_COLS)
+    print("Has labels:", has_labels)
+
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-    dataset = NCTEDataset(df, tokenizer)
+    dataset = NCTEDataset(df, tokenizer, has_labels)
     loader = DataLoader(dataset, batch_size=BATCH_SIZE)
 
     model = EmbeddingModel().to(DEVICE)
