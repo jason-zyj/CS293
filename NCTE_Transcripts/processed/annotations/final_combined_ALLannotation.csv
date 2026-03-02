@@ -1,4 +1,4 @@
-target_comb_idx,OBSID,R1_pred,R2_pred,R3_pred,pred_C1
+target_comb_idx,OBSID,R1,R2,R3,C1
 3_100,3,1,1.0,1.0,1
 3_136,3,1,0.0,1.0,0
 3_152,3,1,1.0,1.0,0
